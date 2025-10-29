@@ -18,4 +18,10 @@ services:
       - ./mods:/data/mods
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    restart: always
+  playit:
+    image: ghcr.io/playit-cloud/playit-agent:0.16
+    network_mode: host
+    environment:
+      - SECRET_KEY=${PLAYIT_SECRET_KEY}
+    restart: always
